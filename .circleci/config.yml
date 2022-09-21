@@ -10,8 +10,10 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
        - checkout
-       - node/install-packages:
-             pkg-manager: npm
+       - run:
+           commnad: npm install
+           name: install npm
+
        - run:
            command: npm run test
            name: Run tests
