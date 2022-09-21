@@ -1,16 +1,15 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.2
 jobs:
   build:
     docker:
+      - image: node:14.20.2
       - image: cimg/base:2022.06
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
     steps:
        - checkout
-       - run: sudo apt-get install npm
+       - run:
        - run:
            command: npm run test
            name: Run tests
