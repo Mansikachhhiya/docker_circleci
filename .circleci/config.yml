@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.20
+      - image: circleci/postgres:11-alpine-ram
         environment:
             POSTGRES_USER: root
             POSTGRES_PASSWORD: 123
