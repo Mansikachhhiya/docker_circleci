@@ -1,0 +1,27 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+jobs:
+  build:
+    context:
+      Docker_with_circleci
+    docker:
+      - image: cimg/base:2022.06
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+    steps:
+       - checkout
+       - node/install-packages:
+             pkg-manager: npm
+       - run:
+           command: npm run test
+           name: Run tests
+    # ... steps for building/testing app ...
+       - setup_remote_docker:
+           docker_layer_caching: true
+           version: 20.10.14
+       - run:
+           name: Build docker
+           command: npm ci:docker
+
