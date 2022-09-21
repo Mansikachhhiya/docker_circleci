@@ -31,7 +31,7 @@ jobs:
              mv /tmp/docker/* /usr/bin
        - run:
            name: Build docker
-           command: npm ci:docker
+           command: npm run docker:build
 
 workflows:
   version: 2
