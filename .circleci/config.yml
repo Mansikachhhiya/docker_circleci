@@ -8,9 +8,11 @@ jobs:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
+        executor: node/default
     steps:
        - checkout
-       - run: sudo npm i -g npm@latest && npm ci
+       - node/install-packages:
+          pkg-manager: npm
        - run:
            command: npm run test
            name: Run tests
