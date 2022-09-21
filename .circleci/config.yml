@@ -10,7 +10,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
        - checkout
-       - run: npm install
+       - run: sudo apt-get install npm
        - run:
            command: npm run test
            name: Run tests
