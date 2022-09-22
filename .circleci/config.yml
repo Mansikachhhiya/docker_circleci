@@ -2,7 +2,6 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 jobs:
-
   build_With_docker:
     docker:
       - image: circleci/postgres:11-alpine-ram
@@ -18,8 +17,8 @@ jobs:
        - checkout
        - node/install-packages:
              pkg-manager: npm
-       - run: npm ci
        - run: node --version
+       - run: npm install
        - run:
            command: npm run test
            name: Run tests
