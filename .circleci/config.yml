@@ -1,9 +1,8 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.2
 jobs:
   build_With_docker:
     docker:
+      - image: cimg/node:14.20
       - image: circleci/postgres:11-alpine-ram
         environment:
             POSTGRES_USER: root
@@ -12,11 +11,8 @@ jobs:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-
     steps:
        - checkout
-       - node/install-packages:
-             pkg-manager: npm
        - run: node --version
        - run: npm install
        - run:
