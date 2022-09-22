@@ -18,6 +18,7 @@ jobs:
        - checkout
        - node/install-packages:
              pkg-manager: npm
+       - run: npm ci
        - run: node --version
        - run:
            command: npm run test
